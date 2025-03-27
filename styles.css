@@ -1,0 +1,81 @@
+/* Import button icon styling */
+.ribbon-import-docx {
+  color: var(--icon-color);
+  transition: color 0.2s ease;
+}
+
+.ribbon-import-docx:hover {
+  color: var(--interactive-accent);
+}
+
+/* Progress notification styling */
+.docx-import-progress {
+  margin-top: 8px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--background-modifier-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.docx-import-progress-bar {
+  height: 100%;
+  background-color: var(--interactive-accent);
+  transition: width 0.3s ease;
+}
+
+/* Success and error notification customization */
+.docx-import-notice {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* File existence alert styling */
+.docx-merge-alert {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid var(--interactive-accent);
+  background-color: var(--background-modifier-hover);
+}
+
+/* Plugin Settings */
+.docx-importer-settings {
+    padding: 10px 20px;
+}
+
+/* Import Progress Modal */
+.docx-import-modal {
+    padding: 20px;
+}
+
+.docx-import-progress {
+    margin: 20px 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--background-modifier-border);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.docx-import-progress-bar {
+    height: 100%;
+    background-color: var(--interactive-accent);
+    transition: width 0.3s ease;
+}
+
+.docx-import-status {
+    text-align: center;
+    margin: 10px 0;
+    color: var(--text-muted);
+}
+
+/* Error Messages */
+.docx-import-error {
+    color: var(--text-error);
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 3px solid var(--text-error);
+    background-color: var(--background-modifier-error);
+}
+

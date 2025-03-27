@@ -1,5 +1,5 @@
-import { App, Plugin, Notice, TFile } from 'obsidian';
-import * as mammoth from 'mammoth';
+import { Plugin, Notice, TFile } from 'obsidian';
+import { convertToHtml } from 'mammoth';
 
 export default class DocxImporterPlugin extends Plugin {
     async onload() {
@@ -38,7 +38,9 @@ export default class DocxImporterPlugin extends Plugin {
                 try {
                     new Notice('Converting DOCX to Markdown...');
                     // First convert DOCX to HTML
-                    const result = await mammoth.convertToHtml({ arrayBuffer: buffer });
+                    const result = await convertToHtml({
+                        arrayBuffer: buffer
+                    });
                     const html = result.value;
                     // Convert HTML to Markdown
                     const markdown = this.htmlToMarkdown(html);
@@ -105,7 +107,8 @@ export default class DocxImporterPlugin extends Plugin {
             .replace(/<ul>(.*?)<\/ul>/gis, (_, content) => content.replace(/<li>(.*?)<\/li>/gi, '- $1\n'))
             .replace(/<ol>(.*?)<\/ol>/gis, (_, content) => content.replace(/<li>(.*?)<\/li>/gi, '1. $1\n'))
             .replace(/<br\s*\/?>/gi, '\n')
-            .replace(/<[^>]+>/g, '') // Remove any remaining HTML tags
+            .replace(/<u>(.*?)<\/u>/gi, '<u>$1</u>') // Preserve underline tags
+            .replace(/<(?!\/?u>)[^>]+>/g, '') // Remove any remaining HTML tags except underline
             .replace(/&nbsp;/g, ' ')
             .replace(/&amp;/g, '&')
             .replace(/&lt;/g, '<')

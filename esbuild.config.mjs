@@ -30,11 +30,16 @@ esbuild.build({
         "@lezer/common",
         "@lezer/highlight",
         "@lezer/lr",
-        ...builtins],
+        ...builtins
+    ],
     format: "cjs",
     target: "es2018",
     logLevel: "info",
     sourcemap: prod ? false : "inline",
-    treeShaking: true,
+    minify: prod,
     outfile: "main.js",
+    platform: 'browser',
+    define: {
+        'process.env.NODE_ENV': '"production"'
+    },
 }).catch(() => process.exit(1));
